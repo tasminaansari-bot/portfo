@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/directorystyles.css">
+    <link rel="icon" type="image/png" href="../images/favicon-tsa.ico">
+</head>
+<body>
+    <div class="topnav">
+         <a href="index.html">Home</a>
+         <a href="index.html#mission">Our Mission</a>
+         <a href="index.html#spotlight">Spotlight</a>
+         <a href="directory.html">Resources</a>
+         <a href="index.html#submit">Submit a Resource</a>
+         <a href="documentation.html">Documentation</a>
+    </div>
+
+<style>
+/* Right-side container */
+#search-container {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 320px;
+    z-index: 9999;
+}
+
+/* Input */
+#searchInput {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Results box */
+#results {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+#results li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#results li:hover {
+    background: #f0f0f0;
+}
+</style>
+
+
+    <script>
+        function searchSite() {
+            let query = document.getElementById("searchInput").value.toLowerCase();
+            let results = document.getElementById("results");
+
+            results.innerHTML = "";
+            if (query.length === 0) return;
+
+            let cards = document.querySelectorAll(".resource-card");
+
+            cards.forEach(card => {
+                let title = card.querySelector("a")?.textContent.toLowerCase() || "";
+                let description = card.querySelector("p")?.textContent.toLowerCase() || "";
+
+                if (title.includes(query) || description.includes(query)) {
+
+                    let li = document.createElement("li");
+                    li.textContent = title;
+
+                    li.onclick = () => {
+                        let tabContent = card.closest(".tabcontent");
+                        let tabId = tabContent.id;
+
+                        openCity(
+                            { currentTarget: document.querySelector(`button[onclick*="${tabId}"]`) },
+                            tabId
+                        );
+
+                        setTimeout(() => {
+                            let resourceSection = document.querySelector(".resources");
+                            resourceSection.scrollTo({
+                                top: card.offsetTop - 180,
+                                behavior: "smooth"
+                            });
+                        }, 200);
+                    };
+
+
+                    results.appendChild(li);
+                }
+            });
+        }
+    </script>
+    <div id="particles-bar">
+        <h1 class="resourcesTitle">Resources</h1>
+    </div>
+    <style>
+        #particles-bar {
+        position: relative;
+        width: 100%;
+        height: 80px; 
+        overflow: hidden;
+        background-color: #f2f2f2; 
+        }
+
+        #particles-bar canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        }
+
+        #particles-bar h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        line-height: 80px; 
+        text-align: center; 
+        }
+    </style>
+    <div class="layout">   
+        <div id="search-container">
+            <input type="text" id="searchInput" placeholder="Search in this website." onkeyup="searchSite()">
+            <ul id="results"></ul>
+        </div>
+
+        <div class="tabs">
+            <button class="tab" onclick="openCity(event, 'Food')">Food</button>
+            <button class="tab" onclick="openCity(event, 'Housing')">Housing</button>
+            <button class="tab" onclick="openCity(event, 'Health')">Health</button>
+            <button class="tab" onclick="openCity(event, 'Education')">Education</button>
+            <button class="tab" onclick="openCity(event, 'Legal')">Legal</button>
+            <button class="tab" onclick="openCity(event, 'Family')">Family</button>
+            <button class="tab" onclick="openCity(event, 'Events')">Events</button>
+            <button class="tab" onclick="openCity(event, 'Outreach')">Outreach</button>
+        </div>
+
+        <!-- Google ZIP code lookup needed a API key and the free version is to locate iframe when sharing the 
+             Map location -->
+        <div class="map-area">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3077.7306430278227!2d-104.92280672408293!3d39.52056860969474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c84bc03f985f7%3A0x6d726011f69d8bf5!2sRock%20Canyon%20High%20School!5e0!3m2!1sen!2sus!4v1764470376255!5m2!1sen!2sus" 
+                width="350" 
+                height="700" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        
+        
+        <div class="resources">
+
+            <div id="Food" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://metrocaring.org/">Metro Caring</a>
+                        <p>Metro Caring is an anti-hunger organization in Colorado that works with the community to meet people’s immediate need for nutritious, culturally relevant food while building a movement to end hunger at its root causes.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-860-7200 • info@MetroCaring.org</p>
+                        <p>Address: <br> 1100 E. 18th Ave. <br> Denver, CO 80218</p>
+                        <p>Open hours: <br> Monday: 10 AM - 6 PM <br> Tuesday: 9:15 AM - 7:30 PM 
+                        <br> Wednesday: 9:15 AM - 3 PM <br> Thursday: 9:15 AM - 3 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.foodbankrockies.org/">Food Bank of the Rockies</a>
+                        <p>Food Bank of the Rockies is a non-profit organization that serves Colorado and Wyoming to combat hunger by collecting and distributing food through a network of partner agencies.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-371-9250</p>
+                        <p>Address:<br>10700 E. 45th Ave <br> Denver, CO 80239</p>
+                        <p>Open hours: 8 AM – 4:30 PM (M-F) </p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.douglas.co.us/human-services/assistance/food-assistance/">Douglas County Community Assistance</a>
+                        <p>The Supplemental Nutrition Assistance Program (SNAP) provides monthly food-purchasing benefits to low-income individuals and families in Colorado. Eligibility is based on income, resources, and household size. Benefits are accessed through an EBT card, which works like a debit card at participating grocery stores.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-688-4825</p>
+                        <p>Address:<br>4400 Castleton Court <br> Castle Rock, CO 80109</p>
+                        <p>Open hours: 8 AM – 5 PM (M-F) </p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.secorcares.com/">SECOR Cares</a>
+                        <p>SECOR Cares is a Denver-area nonprofit that supports people facing suburban poverty through a free food market, a mobile food market, and meal programs for children. It also helps individuals access government benefits, mental health and legal resources, and support services for seniors.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-842-5621</p>
+                        <p>Address:<br> 17151 Pine Lane <br> Parker, CO, 80134</p>
+                        <p>Open hours: <br> Wednesday-Thursday: 9 AM - 4 PM <br> Friday-Saturday: 9 AM - 1 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.ccharitiescc.org/">Catholic Charities of Central Colorado</a>
+                        <p>Catholic Charities of Central Colorado provides over 70 programs across 10 counties to support people in need, regardless of background. They offer food assistance, immigration legal help, family and adult services, employment support, and health and mental health resources, all aimed at addressing poverty and helping families become self-sufficient.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-215-4521 • info@CCharitiesCC.org</p>
+                        <p>Address:<br> 2 Oakwood Park Plaza <br> Suite 100 Castle Rock, CO 80104</p>
+                        <p>Open hours: 10 AM - 2 PM (M-F)</p>
+                    </div>
+                </div>
+                 <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.voacolorado.org/services/meals-on-wheels/">Meals on Wheels</a>
+                        <p>Meals on Wheels delivers nutritious meals to homebound people, especially seniors who can’t cook or shop. It also provides safety checks, friendly interaction from volunteers, and accommodates dietary needs. The program supports independence and health, funded by government aid, donations, and grants.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-297-0408 • info@voacolorado.org</p>
+                        <p>Address:<br> 2660 Larimer Street <br> Denver, CO, 80205</p>
+                        <p>Open hours: 8 AM - 4:30 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.aurorainterfaith.org/">Aurora Interfaith</a>
+                        <p>Aurora Interfaith provides emergency assistance to residents of Aurora, Colorado, primarily through a food bank, a mobile fresh market, and utility assistance. The organization also offers services like homeless food kits, pet food, diapers, and help with school supplies.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: office@aurorainterfaith.org</p>
+                        <p>Address:<br> 1553 Clinton Street <br> Aurora, CO 80010</p>
+                        <p>Open hours: 9:30 AM - 12:30 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+            <div id="Housing" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.coloradocoalition.org/">Colorado Coalition for the Homeless</a>
+                        <p>The Colorado Coalition for the Homeless provides housing, healthcare, outreach, job assistance, family support, and long-term solutions for people experiencing homelessness. They combine medical care, mental health services, and housing to prevent homelessness and help individuals regain stability.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-293-2217</p>
+                        <p>Address: <br> 2111 Champa St. <br> Denver, CO 80205</p>
+                        <p>Open hours: 8 AM – 5 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.voa.org/">Volunteers of America Colorado</a>
+                        <p>Volunteers of America Colorado (VOA Colorado) offers more than 50 programs across the state, providing housing support, emergency shelters, and food services. They assist seniors, veterans, children, families, and people experiencing homelessness, focusing on a housing-first approach to help individuals achieve stability and self-sufficiency.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 703-341-5000 • info@voa.org</p>
+                        <p>Address: <br> 2660 Larimer Street <br> Denver, CO 80205</p>
+                        <p>Open hours: 8 AM – 4:30 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://denverrescuemission.org/">Denver Rescue Mission</a>
+                        <p>Denver Rescue Mission offers emergency shelter, meals, clothing, and long-term rehabilitation programs for people experiencing homelessness and poverty in Denver and northern Colorado. Their services include life skills training, addiction recovery, and support in securing permanent housing.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 202-900-2902</p>
+                        <p>Address: <br> 5855 Wadsworth Bypass, Unit A <br> Arvada, CO 80003</p>
+                        <p>Open hours: 8 AM – 4:30 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.thefamilytree.org/">Family Tree</a>
+                        <p>Family Tree in Denver works to prevent and address child abuse, domestic violence, and homelessness by offering emergency shelter, legal advocacy, housing assistance, and supervised parenting services. The organization supports individuals and families in crisis by addressing these interconnected issues holistically.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-467-2604 • homelessness@thefamilytree.org</p>
+                        <p>Address: <br> 3805 Marshall Street <br> Wheat Ridge, CO 800333</p>
+                        <p>Open hours: 8 AM – 5 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://give.salvationarmyusa.org/give/164006/#!/donation/checkout">Salvation Army Colorado</a>
+                        <p>The Salvation Army in Colorado offers emergency shelter, housing and rental assistance, food support, youth and adult programs, and addiction recovery services. They also provide utility help and holiday aid, aiming to address both immediate needs and the root causes of poverty in the community.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-295-3366</p>
+                        <p>Address: <br> 2201 Stout St.<br>Denver, CO 80205</p>
+                        <p>Open hours: 9 AM – 4 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://comitiscrisiscenter.org/">Comitis Crisis Center</a>
+                        <p>Comitis Crisis Center offers emergency shelter and support services for families and vulnerable groups in the Denver area. Its programs include family and veteran transitional housing, substance use recovery services, and basic needs assistance such as meals, hygiene supplies, and seasonal clothing.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-341-9160</p>
+                        <p>Address: <br> 9840 E. 17th Ave. <br> Aurora, CO 80010</p>
+                        <p>Open hours: 24/7</p>
+                    </div>
+                </div>
+            </div>
+            <div id="Health" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.stridechc.org/">STRIDE Community Health Center</a>
+                        <p>STRIDE Community Health Center provides affordable medical, dental, and mental health services to low-income, uninsured, and underserved communities in the Denver metro area. As an FQHC, it offers primary care, specialty services, case management, health education, and care delivered through clinics, school-based centers, and mobile units.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-778-7433</p>
+                        <p>Address: <br> 7495 W 29th Ave <br> Wheat Ridge, CO 80033</p>
+                        <p>Open hours: 8 AM – 5 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.denverhealth.org/services/community-health">Denver Health</a>
+                        <p>Denver Health is Denver’s safety-net health system, providing comprehensive care to all residents regardless of ability to pay. It includes a Level I Trauma Center, a 555-bed hospital, 911 emergency response, community clinics, and public health programs, and also serves as a major teaching hospital for the University of Colorado School of Medicine.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-436-4949</p>
+                        <p>Address: <br> 777 Bannock Street <br> Denver, CO 80204</p>
+                        <p>Open hours: 24/7 (hospital), clinics vary</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.clinica.org/">Clinica Family Health</a>
+                        <p>Clinica Family Health delivers affordable, culturally responsive medical, dental, and behavioral health care to low-income and underserved communities in Colorado. As an FQHC, it provides services such as primary care, prenatal and pediatric care, women’s health, dental care, and mental health support, along with insurance assistance and a sliding-scale discount program.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-650-4789</p>
+                        <p>Address: <br> 1701 W 72nd Ave <br> Denver, CO 80221</p>
+                        <p>Open hours:  8 AM – 5 PM (M–F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.auroramhr.org/">Aurora Mental Health & Recovery</a>
+                        <p>Aurora Mental Health & Recovery (AMHR) offers mental health and substance use services including therapy, crisis intervention, and case management for all ages. The organization provides specialized programs such as Homeless Services and operates a Speakers Bureau to promote mental health awareness in the community.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-617-2300</p>
+                        <p>Address: <br> 2206 Victor Street <br> Aurora, CO 80045</p>
+                        <p>Open hours:  24/7 crisis center</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.communityreachcenter.org/">Community Reach Center</a>
+                        <p>Community Reach Center provides behavioral and mental health services to children, adults, and families in Adams County, Colorado. They offer outpatient counseling, crisis support, residential programs, school-based services, and integrated medical care for physical health and medication management.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-853-3500</p>
+                        <p>Address: <br> 8989 Huron St. <br> Thornton, CO 80260</p>
+                        <p>Open hours:  <br> Monday-Thursday: 8 AM - 6 PM <br> Friday: 8 AM - 5 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.wellpower.org/">WellPower</a>
+                        <p>WellPower is Colorado’s largest community mental health center, offering treatment, prevention, outreach, and crisis services for children, families, and adults. Working across community sites, schools, and specialized programs, it supports mental health, housing stability, and recovery for conditions such as anxiety, depression, and PTSD.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-504-6500</p>
+                        <p>Address: <br> 4141 E Dickenson Pl <br> Denver, CO, 80222</p>
+                        <p>Open hours: <br> Monday-Thursday: 8 AM - 5 PM <br> Friday: 8 AM - 4:30 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.saludclinic.org/">Salud Family Health</a>
+                        <p>Salud Family Health is an FQHC providing integrated medical, dental, and behavioral health services for underserved communities in Colorado. It offers family medicine, pediatrics, chronic disease care, wellness programs, and specialized services like HIV care through the CARES clinic. Salud uses a sliding fee scale, accepts many insurance plans, and never turns patients away based on ability to pay.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 970-484-0999</p>
+                        <p>Address: <br> 562 Sable Boulevard, Suite 100 <br> Aurora, CO 80011</p>
+                        <p>Open hours: 8:30 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Education" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://tsaweb.org/">Technology Student Association</a>
+                        <p>TSA is a national, student-led organization in highschools and middle schools that promotes STEM learning through hands-on projects, leadership development, and competitive events. It gives students opportunities to explore robotics, engineering, coding, and more.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 703-860-9000 • general@tsaweb.org</p>
+                        <p>Address: <br> 1904 Association Drive <br> Reston, VA 20191</p>
+                        <p>Open hours: unknown</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.denverlibrary.org/">Denver Public Librariies</a>
+                        <p>Denver Public Library gives free access to books, homework help, online courses, ESL support, and tutoring via services like Tutor.com for students and adult learners.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-865-1111</p>
+                        <p>Address (Central library): <br> 10 W 14th Ave <br> Denver, CO 80204</p>
+                        <p>Open hours: <br> Monday-Thursday: 10 AM - 6 PM <br> Friday: 10 AM - 5 PM <br> Saturday-Sunday: 11 AM - 5 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.auroragov.org/things_to_do/aurora_public_library">Aurora Public Libraries</a>
+                        <p>Aurora Public Library offers free English-language learning (ESL), conversation groups, reading groups for English learners, Spanish & multilingual resources, and a wide catalog of books and educational media.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-739-70001</p>
+                        <p>Address (Central library): <br> 14949 E Alameda Pkwy <br> Aurora, CO 80012</p>
+                        <p>Open hours: 8 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.dcl.org/">Douglas County Libraries</a>
+                        <p>Douglas County Libraries offers adult-education including ESL and GED prep, literacy programs, tutoring matched with volunteer tutors, and a robust public library system with books, digital resources, and study spaces.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-739-70001</p>
+                        <p>Address (Central library): <br> 100 S. Wilcox St. <br> Castle Rock, CO 80104</p>
+                        <p>Open hours: <br>  Monday-Thursday: 8 AM - 8 PM <br> Friday: 8 AM - 6 PM <br> Saturday-Sunday: 10 AM - 4 PM</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://thelearningsource.org/">The Learning Source</a>
+                        <p>The Learning Source partners with local libraries to offer free ESL classes (all levels), adult literacy programs, GED or high school equivalency prep, citizenship classes, and cultural-education support. </p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-837-1123 • info@thelearningsource.org</p>
+                        <p>Address: <br> 929 29th Street<br>Denver, CO 80205</p>
+                        <p>Open hours: Schedules vary</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://ccaurora.edu/">Community College of Aurora</a>
+                        <p>CCA offers English as a Second Language (ESL), GED/high school equivalency prep, career-training, and adult-education courses for residents of Aurora and surrounding areas.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-360-4700</p>
+                        <p>Address: <br> 16000 E. CentreTech Pkwy <br> Aurora, CO 80011</p>
+                        <p>Open hours: Schedules vary by course</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Legal" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.coloradolegalservices.org/">Colorado Legal Services</a>
+                        <p>Colorado Legal Services (CLS) offers free civil legal aid to low-income individuals and seniors: housing issues (evictions, foreclosures, landlord/tenant), family law, consumer rights, public benefits, and economic justice. They help people meet basic needs like shelter, income, and safety through legal representation or advice.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-837-1313</p>
+                        <p>Address: <br> 1905 Sherman St., Suite 300 <br> Denver, CO 80203</p>
+                        <p>Open hours: 8:30 AM – 5:00 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://jamlac.org/">Justice and Mercy Legal Aid Center</a>
+                        <p>Justice and Mercy Legal Aid Center (JAMLAC) provides free or low-cost legal representation and support with domestic violence, family law, immigration, civil legal issues, and general advocacy for vulnerable populations. They hold legal clinics around the metro area to support those in need.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-839-1008</p>
+                        <p>Address: <br>  913 N. Wyandot St. <br> Denver, CO 80204</p>
+                        <p>Open hours: By clinic schedule - call to confirm</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.denbar.org/mvl">Metro Volunteer Lawyers</a>
+                        <p>Metro Volunteer Lawyers (MVL) is the pro-bono program of the local bar association, which connects low- and moderate-income clients with volunteer attorneys for civil cases (housing, tenants’ rights, consumer issues, public benefits, immigration, etc.). They work in concert with Colorado Legal Services for referrals.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-830-8210 (via CLS referral)</p>
+                        <p>Address: <br>  1905 Sherman St., Suite 300 <br> Denver, CO 80203</p>
+                        <p>Open hours: 8:30 AM – 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://disabilitylawco.org/">Disability Law Colorado</a>
+                        <p>Disability Law Colorado offers legal advocacy, representation and advice for people with disabilities and older adults. They help with disability rights, public benefits, access to services, and legal representation in civil matters under disability law.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-722-0300</p>
+                        <p>Address: <br>  455 Sherman St., Suite 130 <br> Denver, CO 80203</p>
+                        <p>Open hours:  Standard business hours - call to confirm</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://coloradolawyerscommittee.org/">Colorado Lawyers Committee</a>
+                        <p>The Colorado Lawyers Committee is a consortium of law firms that provide pro bono legal advocacy and representation for children, low-income, and disadvantaged community members across the state. They work especially on immigration, housing, family law, and other civil legal protections for underserved populations.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-256-2782</p>
+                        <p>Address: <br>  1401 Lawrence St., Unit 2300 <br> Denver, CO 80202</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+            <div id="Family" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.cofamilycenters.org/">Family Resource Center Association</a>
+                        <p>The Family Resource Center Association (FRCA) supports families through local Family Resource Centers across the metro area. Services include childcare navigation, parenting classes, mentoring, family goal-setting, basic-needs support, and connection to mental health or financial assistance.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-388-1001</p>
+                        <p>Address: <br>  2543 California Street <br> Denver, CO 80205</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.ccharitiescc.org/get-help/family-services/">Catholic Charities Family & Childcare Services</a>
+                        <p>Catholic Charities offers comprehensive family services including early childhood education, childcare centers, parent support programs, emergency family assistance, homelessness prevention, and counseling referrals.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-742-0828</p>
+                        <p>Address: <br>  6240 Smith Road <br> Denver, CO 80216</p>
+                        <p>Open hours: 8 AM - 4:30 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://hopekids.org/colorado/">HopeKids Colorado</a>
+                        <p>HopeKids provides ongoing support for families who have a child with a life-threatening medical condition through free family events, peer connection, mentoring, and community programs that strengthen family resilience.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-470-9208</p>
+                        <p>Address: <br>  8500 Pena Blvd. <br> Denver, CO 802496</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Events" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Parks-Recreation">Denver Parks & Recreation</a>
+                        <p>Denver Parks & Recreation hosts year-round community events including fitness classes, cultural celebrations, outdoor movies, sports leagues, arts workshops, and family recreation activities across the metro region.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-913-1311</p>
+                        <p>Address: <br>  201 W. Colfax Ave. <br> Denver, CO 80202</p>
+                        <p>Open hours: 8 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://arapahoelibraries.bibliocommons.com/v2/events">Arapahoe Library Events & Classes</a>
+                        <p>Arapahoe Libraries offers free community events such as craft workshops, STEM classes, teen programs, storytimes, book clubs, job support sessions, and community meet-ups accessible to multiple metro cities.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-542-7279</p>
+                        <p>Address: <br>  12855 E. Adam Aircraft Cir. <br> Englewood, CO 80112</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.ssprd.org/">South Suburban Parks & Recreation</a>
+                        <p>South Suburban Parks & Recreation provides events like sports tournaments, community festivals, fitness classes, art programs, senior events, and seasonal activities across southern metro cities.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-798-5131</p>
+                        <p>Address: <br>  4810 E. County Line Rd. <br> Littleton, CO 80126</p>
+                        <p>Open hours: 8 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+            <div id="Outreach" class="tabcontent">
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://projecthelping.org/">Project Helping</a>
+                        <p>Project Helping organizes volunteer events focused on mental-health–boosting service, including packing kits for people experiencing homelessness, community cleanup days, youth volunteer projects, and donation drives.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-551-0624</p>
+                        <p>Address: <br>   8100 E. Arapahoe Rd., Suite 300 <br> Centennial, CO 80112</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.denverdreamcenter.org/">Denver Dream Center</a>
+                        <p>Denver Dream Center supports families in need through outreach events, neighborhood service projects, youth mentoring, holiday donation drives, prison re-entry support, and community volunteer opportunities.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-953-3992</p>
+                        <p>Address: <br>   2165 Curtis Street <br> Denver, CO 80205</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://wishofalifetime.org/">Wish of a Lifetime</a>
+                        <p>Wish of a Lifetime engages volunteers and donors to support isolated older adults through community projects, intergenerational outreach, and service events aimed at reducing loneliness.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-726-0318</p>
+                        <p>Address: <br>  303 E. 17th Ave., Suite 1050 <br> Denver, CO 80203</p>
+                        <p>Open hours: 8 AM - 4:30 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://www.coloradocommunityaction.org/">Colorado Community Action Association</a>
+                        <p>CCAA coordinates statewide outreach supporting low-income families through community programs, resource drives, volunteer initiatives, and partnerships with local nonprofits for housing, food, and family support.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 720-446-8022</p>
+                        <p>Address: <br> 110 16th St Mall, Suite 600 <br> Denver, CO 80202</p>
+                        <p>Open hours: 9 AM - 5 PM (M-F)</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-left">
+                        <a href="https://unitedwaydenver.org/">Mile High United Way</a>
+                        <p>Mile High United Way organizes community service projects, donation drives, mentoring programs, literacy initiatives, and family support events that serve communities across the Denver metro area.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="resource-right">
+                        <p>Contact: 303-433-8383</p>
+                        <p>Address: <br> 711 Park Ave. West <br> Denver, CO 80205</p>
+                        <p>Open hours: 8 AM - 4 PM (M-F)</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="Health" class="tabcontent">
+                <div class="resource-card">
+                    <h3>Health</h3>
+                    <p>Health info here.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- END layout -->
+
+
+<script src="static/directory.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    particlesJS("particles-bar", {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 400 } },
+            "color": { "value": ["#9357cc", "#2989d8", "#2cc99d"] },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.7 },  
+            "size": { "value": 2.5, "random": true },
+            "line_linked": { 
+            "enable": true, 
+            "distance": 120,  
+            "color": "#2989d8", 
+            "opacity": 0.5,   
+            "width": 1.2 
+            },
+            "move": { 
+            "enable": true, 
+            "speed": 1.5,     
+            "direction": "right", 
+            "random": true, 
+            "straight": false, 
+            "out_mode": "out" 
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": true, "mode": "repulse" } },
+            "modes": { "repulse": { "distance": 120, "duration": 0.4 } }
+        },
+        "retina_detect": true
+    });
+</script>
+
+</body>
+</html>

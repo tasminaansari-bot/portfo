@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resourcely</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" integrity="sha512-kMPqFnKueEwgQFzXLEEl671aHhQqrZLS5IP3HzqdfozaST/EgU+/wkM07JCmXFAt9GO810I//8DBonsJUzGQsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="static/style.css">
+		<link rel="icon" type="image/png" href="../images/favicon-tsa.ico">
+    </head>
+    <body style="background-color: white;">
+		<style>
+
+			#search-container {
+				position: fixed;
+				top: 110px;
+				right: 20px;
+				width: 320px;
+				z-index: 9999;
+			}
+		</style>
+
+    	<div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="#mission">Our Mission</a>
+        <a href="#spotlight">Spotlight</a>
+        <a href="directory.html">Resources</a>
+        <a href="#submit">Submit a Resource</a>
+        <a href="documentation.html">Documentation</a>
+      </div>
+		
+		<div id="particles-js"><canvas class="particles-js-canvas-el" width="1350" height="1000" style="width: 100%; height: 100%;"></canvas></div>
+			<div class="header">
+				<h1>Resourcely</h1>
+
+				<div class="nectar-cta" data-alignment="Centre" data-text-color="custom">
+				<h6 style="color: #2989d8;"></h6>
+			</div>
+			<p><a class="cta" href="directory.html"><button fdprocessedid="sl9bbve">Resources</button></a></p>
+		</div>
+		
+		<section class="mission" id="mission">
+		  <h2>Who are we?</h2>
+ 		  <p class="subtitle">We are a community-driven resource hub dedicated to connecting individuals and families with vital support services across the Denver Metro area. Our goal is to make essential resources easier to find, access, and understand—from food assistance and housing support to healthcare services, education programs, and youth opportunities. By bringing community partners, nonprofits, and local information together in one place, we aim to empower every person to feel supported, informed, and included.</p>
+ 		</section>
+ 		<div class="stats-container">
+ 			<div class="stat">
+ 				<div class="resources-odometer odometer">0</div>
+ 				<div class="type">Resources Listed</div>
+ 			</div>
+ 			<div class="stat">
+ 				<div class="trusted-odometer odometer plus">0</div>
+ 				<div class="type">Trusted Organizations</div>
+ 			</div>
+ 			<div class="stat">
+ 				<div class="communities-odometer odometer plus">0</div>
+ 				<div class="type">Communities Served</div>
+ 			</div>
+ 		</div>
+    
+ 		<section class="spotlight" id="spotlight">
+ 			<h3 class="subheading">Check out our top resources!</h3>
+			<div class="innersec">			
+		    <div class="info-card">
+		        <h3 class="info-title">Volunteers of America</h3>
+		        <div class="info-img">
+              		<img src="../images/volunteer-img.jpg" alt="Volunteers of America Colorado picture" height="300" width="300">
+            	</div>
+		        <p class="info-desc">Volunteers of America Colorado (VOA Colorado) offers more than 50 programs across the state, providing housing support, emergency shelters, and food services. </p>
+		        <div class="info-more">
+		            <p>Contact: 703-341-5000 • info@voa.org</p>
+		            <p>2660 Larimer Street, Denver, CO 80205</p>
+		            <p>Open 8 AM – 4:30 PM Monday-Friday</p>
+		            <p>Visit website at www.voa.org</p>
+		        </div>
+		    </div>
+
+		    <div class="info-card">
+		        <h3 class="info-title">Food Bank of the Rockies</h3>
+		        <div class="info-img">
+              		<img src="../images/food-img.jpg" alt="Food Bank of the Rockies pic" height="300" width="300">
+            	</div>
+		        <p class="info-desc">Food Bank of the Rockies is a non-profit organization that serves Colorado and Wyoming to combat hunger by collecting and distributing food through a network of partner agencies.</p>
+		        <div class="info-more">
+		            <p>Contact: 303-371-9250</p>
+		            <p>10700 E. 45th Ave, Denver, CO 80239</p>
+		            <p>Open 8 AM – 4:30 PM Monday-Friday</p>
+		            <p>Visit website at foodbankrockies.org</p>
+		        </div>
+		    </div> 
+
+		    <div class="info-card">
+		        <h3 class="info-title">Technology Student Association</h3>
+		        <div class="info-img">
+              		<img src="../images/techstu-img.png" alt="TSA picture" height="300" width="300">
+            	</div>
+		        <p class="info-desc">TSA is a national, student-led organization in highschools and middle schools that promotes STEM learning through hands-on projects, leadership development, and competitive events. It gives students opportunities to explore robotics, engineering, coding, and more.</p>
+
+
+		        <div class="info-more">
+		            <p>Contact: 703-860-9000 • general@tsaweb.org</p>
+		            <p>1904 Association Drive, Reston, VA 20191</p>
+		            <p>Open hours unknown</p>
+		            <p>Visit website at tsaweb.org</p>
+		        </div>
+		    </div>
+		</section>
+	
+	<section class="mybgcolor">
+		<section class="alt-sections">
+
+		    <div class="alt-row">
+		        <img src="../images/Community-img.jpg" class="alt-img" alt="Hands on top of each other">
+		        <div class="alt-text">
+		            <h2>Connecting Communities</h2>
+		            <p>
+		                We work to bring together trusted organizations across the Denver metro region
+		                to help families find support faster. Our hub simplifies access to food, housing,
+		                transportation, and wellness resources put all in one place.
+		            </p>
+		        </div>
+		    </div>
+
+			<div class="alt-row">
+			    <div class="alt-text">
+			        <h2>Empowering You</h2>
+			        <p>
+			            Whether you're searching for local shelters, tutoring programs, healthcare clinics,
+			            or youth services, our mission is to provide verified, up-to-date information that
+			            you can rely on. Your community supports you, and so do we.
+			        </p>
+			    </div>
+			    <img src="../images/Empowering-img.jpg" class="alt-img" alt="People facing the distance">
+			</div>
+
+		</section>
+
+    <section class="submit" id="submit">
+      <h2 class="submit-title">Submit your Own Resource</h2>
+      
+      <div class="submit-container">
+        <form id="userForm">
+ 
+          <label>Name of Organization:</label><br>
+          <input type="text" name="name" class="rounded-input" required><br><br>
+
+
+          <label>What type of resource is this?</label><br>
+          <select name="type" class="rounded-input" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="Food">Food</option>
+            <option value="Housing">Housing</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Legal">Legal</option>
+            <option value="Family">Family</option>
+            <option value="Events">Events</option>
+            <option value="Outreach">Outreach</option>
+          </select><br><br>
+
+
+          <label>Describe what this resource does:</label><br>
+          <textarea name="message" rows="5" class="rounded-input" required></textarea><br>
+
+          <input type="submit" value="Send">
+          
+          <p id="msg" class="submit-msg"></p>
+        </form>
+      </div>
+
+      <script>
+        document.getElementById("userForm").addEventListener("submit", function(e){
+          e.preventDefault(); 
+
+          let form = this;
+          let formData = new FormData(this);
+
+          fetch("submit.php", {    
+                method: "POST",
+                body: formData
+          })
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("msg").textContent = "Thank you for submitting a resource! Your data is stored.";
+            form.reset();
+            setTimeout(() => {
+              document.getElementById("msg").textContent = "";
+            }, 3000);
+          })
+          .catch(() => {
+            document.getElementById("msg").textContent = "Error submitting form.";
+          });
+        });
+      </script>
+    </section>
+
+
+
+		<!-- COPYRIGHT FOOTER -->
+		<footer class="footer">
+		    © 2025 Resourcely Webmaster Project — All Rights Reserved
+		</footer>
+
+
+ 		<script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js" integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="static/script.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+		<script>
+
+  particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 250,
+      "density": {
+        "enable": true,
+        "value_area": 700
+      }
+    },
+    "color": {
+      "value": ["#9357cc", "#2989d8", "#2cc99d"]
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 15
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 2.0,
+        "opacity_min": 0.15,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 2.5,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 2,
+        "size_min": 0.15,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 110,
+      "color": "#2989d8",
+      "opacity": 0.35,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.0,
+      "direction": "right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+
+		</script>
+
+		<script>
+			if ('scrollRestoration' in history) {
+    			history.scrollRestoration = 'manual';
+			}
+
+			window.onload = function() {
+    			window.scrollTo(0, 0);
+			};
+		</script>	
+</body>
+</html>

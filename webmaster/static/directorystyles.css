@@ -1,0 +1,253 @@
+
+body{
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* NAV BAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.topnav {
+    background-color: lightgrey;
+    width: 100%;
+    margin: 0;
+    padding: 11px 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* NAV LINKS */
+.topnav a {
+    color: black;
+    text-align: center;
+    padding: 30px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 10px;
+    position: relative;
+    top: 2px;
+
+}
+
+/* HOVER EFFECT */
+.topnav a:hover {
+  color: darkgray;
+}
+
+/* ACTIVE LINK */
+.topnav a.active {
+  color: black;
+  font-weight: bold;
+}
+
+.resourcesTitle {
+  font-size: 40px;     
+  font-weight: 700;
+  color: black;
+  margin: 12px 0;
+}
+
+/* MAIN LAYOUT FIX */
+.layout {
+  display: flex;
+  height: 85vh;
+  overflow: hidden;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  background: #fff;
+  height: 93%;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tab:hover {
+  background-color: lightgray;
+}
+
+.tab button.active {
+  background-color: darkgrey;
+}
+
+/* MAP */
+.map-area {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 100%;             
+}
+
+/* Map iframe */
+.map {
+  width: 90%;
+  border-radius: 20px;
+}
+
+/* RESOURCES FIX */
+.resources {
+  flex: 1;      
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* RESOURCE CARD */
+.resource-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Left */
+.resource-left {
+  flex: 2;
+  padding-right: 20px;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  background-color: #ccc;
+  margin: 0 20px;
+}
+
+/* Right */
+.resource-right {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.resource-left a {
+  color: black;          
+  text-decoration: none; 
+  font-weight: bold;   
+  font-size: 20px;
+}
+
+.resource-left a:hover {
+  text-decoration: underline;    
+}
+
+.resource-left {
+  width: 65%;          
+  max-width: 600px;   
+  padding-right: 20px; 
+}
+
+.resource-left p {
+  margin-top: 8px;
+  line-height: 1.4;
+  margin-right: 100px;
+  margin-top: 10px;
+}
+
+.tabcontent {
+  display: none;
+}
+
+.bg-text {
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0, 0.4); 
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, #0ea5e9 0%, #3b82f6 50%, transparent 100%);
+    background-image: url('../../images/Document.jpg');
+    background-size: 90% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    font-weight: 500;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+.hero-text-overlay {
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 100px;
+  color: white; 
+}
+
+.hero-text-overlay h1 {
+  font-size: 3em;
+}
+
+.hero h1 {
+  font-size: 90px;
+  font-weight: 700;
+  color: lightgray;
+  margin: 20px 0;
+  margin-top: 10px;
+}
+
+.hero .subtitle {
+  font-size: 28px;
+  font-weight: 300;
+  color: lightgray;
+  margin-top: 10px;
+}
+
+ .mybgcolor{
+    background: #f2f2f2;
+    padding: 50px 0px;
+  }
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 14px;
+    color: #fff;
+    border-top: 1px solid #ddd;
+    background: #333333;
+}
